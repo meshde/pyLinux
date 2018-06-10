@@ -88,8 +88,6 @@ def waitpid(pid, options=0):
     libc.waitpid(pid, ctypes.byref(status), options)
     return status
 
-def get_object_from_pointer(pointer):
-    return ctypes.cast(pointer, ctypes.py_object).value
-
 def mount(source, destination, fstype, flags=0, data=''):
+    assert utils.is_root()
     return libc.mount(source, destination, fstype, flags, data)
