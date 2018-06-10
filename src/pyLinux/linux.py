@@ -91,11 +91,5 @@ def waitpid(pid, options=0):
 def get_object_from_pointer(pointer):
     return ctypes.cast(pointer, ctypes.py_object).value
 
-def test():
-    print('Just a test bruh!')
-    __test()
-    return
-
-def __test():
-    print('Private Test MOFO!!!')
-    return
+def mount(source, destination, fstype, flags=0, data=''):
+    return libc.mount(source, destination, fstype, flags, data)
