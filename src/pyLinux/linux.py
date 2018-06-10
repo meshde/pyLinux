@@ -91,3 +91,18 @@ def waitpid(pid, options=0):
 def mount(source, destination, fstype, flags=0, data=''):
     assert utils.is_root()
     return libc.mount(source, destination, fstype, flags, data)
+
+def umount(target):
+    return libc.umount(target)
+
+def umount2(target, flags):
+    return libc.umount2(target, flags)
+
+def unshare(flags):
+    return libc.unshare(flags)
+
+def setns(file_descriptor, nstype):
+    return libc.setns(file_descriptor, nstype)
+
+def sethostname(name):
+    return libc.sethostname(name, len(name))
