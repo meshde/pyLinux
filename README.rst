@@ -2,14 +2,33 @@
 pyLinux
 =======
 
-A python wrapper over the Linux C library
+A python wrapper for the Linux C library (glibc_) and other Linux functionalities (e.g. cgroups).
 
-FIXME: provide a two paragraphs summary of this package
+The package mainly includes the Linux functionalities that are not available through the python os package. The package was created to facilitate the creation of Linux Containers in python, so as of now consists of those functionalities needed for this particular function only.
+
+If you come across other Linux system calls/functionalities that cannot be invoked using the python os package, please open an issue_
+
+Functionalities Included
+========================
+
+- clone
+- mount
+- umount
+- unshare
+- setns
+- sethostname
+- cgroups
+
+TODO
+====
+
+- capabilities?
+- Documentation
 
 Full documentation and API
 ==========================
 
-FIXME: Provide the URL of the documentation (@ readthedocs.org ?)
+Full Documentation yet to be created. (Sorry about that!)
 
 Developer notes
 ===============
@@ -51,4 +70,7 @@ Source code
 
 Issues tracker
 
-  http://www.mystuff.com/issues
+  https://github.com/meshde/pyLinux/issues
+
+.. _issue: https://github.com/meshde/pyLinux/issues
+.. _glibc: https://www.gnu.org/software/libc/
