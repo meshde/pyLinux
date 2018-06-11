@@ -2,7 +2,7 @@
 pyLinux
 =======
 
-A python wrapper for the Linux C library (glibc) and other Linux functionalities (e.g. cgroups).
+A python wrapper for the Linux C library (glibc_) and other Linux functionalities (e.g. cgroups).
 
 The package mainly includes the Linux functionalities that are not available through the python os package. The package was created to facilitate the creation of Linux Containers in python, so as of now consists of those functionalities needed for this particular function only.
 
@@ -73,3 +73,4 @@ Issues tracker
   https://github.com/meshde/pyLinux/issues
 
 .. _issue: https://github.com/meshde/pyLinux/issues
+.. _glibc: https://www.gnu.org/software/libc/
