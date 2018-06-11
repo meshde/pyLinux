@@ -70,4 +70,6 @@ Source code
 
 Issues tracker
 
-  .. _issue: https://github.com/meshde/pyLinux/issues
+  https://github.com/meshde/pyLinux/issues
+
+.. _issue: https://github.com/meshde/pyLinux/issues
