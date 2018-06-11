@@ -6,7 +6,7 @@ A python wrapper for the Linux C library (glibc) and other Linux functionalities
 
 The package mainly includes the Linux functionalities that are not available through the python os package. The package was created to facilitate the creation of Linux Containers in python, so as of now consists of those functionalities needed for this particular function only.
 
-If you come across other Linux system calls/functionalities that cannot be invoked using the python os package, please open an [issue](https://github.com/meshde/pyLinux/issues)
+If you come across other Linux system calls/functionalities that cannot be invoked using the python os package, please open an issue_
 
 Functionalities Included
 ========================
@@ -70,4 +70,4 @@ Source code
 
 Issues tracker
 
-  https://github.com/meshde/pyLinux/issues
+  .. _issue: https://github.com/meshde/pyLinux/issues
