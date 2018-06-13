@@ -13,7 +13,7 @@ A python wrapper over the Linux C library
 from setuptools import setup, find_packages
 import os, sys
 
-version = '1.0.0.dev0'
+version = '1.0.dev0'
 
 this_directory = os.path.abspath(os.path.dirname(__file__))
 
@@ -26,7 +26,7 @@ long_description = '\n\n'.join(
                                ('doc', 'changes.rst'))]
     )
 dev_require = ['Sphinx']
-dev_require += ['nose', 'coverage']
+dev_require += ['nose', 'coverage', 'pytest']
 if sys.version_info < (2, 7):
     dev_require += ['unittest2']
 
