@@ -1,5 +1,6 @@
 import errno
 import os
+import ctypes
 
 def is_type(var, typ):
     return isinstance(var, typ)
