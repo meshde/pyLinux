@@ -60,9 +60,13 @@ MS_STRICTATIME = (1<<24)	# Always perform atime updates
 MS_LAZYTIME = (1<<25)	# Update the on-disk [acm]times lazily
 
 
+SIGCHLD = 17 # Obtained from <signal.h>
+
 libc = ctypes.CDLL('libc.so.6')
 
 def clone(callback, flags=0, args=None):
+    flags = flags | SIGCHLD
+
     stack = ctypes.c_char_p(" " * 8096)
     stack = ctypes.cast(stack, ctypes.c_void_p)
 

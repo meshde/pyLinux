@@ -2,6 +2,7 @@ def test_clone():
     import linux
     import os
     import time
+    import utils
 
     def callback():
         print("here")
@@ -10,10 +11,10 @@ def test_clone():
         return 0
 
     pid = linux.clone(callback)
-    # print(pid)
-    # print(type(pid))
-    # _, status = os.waitpid(pid, 0)
+
+    assert utils.is_alive(pid)
     status = linux.waitpid(pid)
+    assert not utils.is_alive(pid)
     print('{} exited with status {}'.format(pid, status))
     return
 
