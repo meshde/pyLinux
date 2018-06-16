@@ -62,21 +62,19 @@ MS_LAZYTIME = (1<<25)	# Update the on-disk [acm]times lazily
 
 SIGCHLD = 17 # Obtained from <signal.h>
 
-STACK_SIZE = 1024 * 1024
+STACK_SIZE = 32768
 
 libc = ctypes.CDLL('libc.so.6')
 
-def clone(callback, flags=0, args=None):
+def clone(callback, stack_size=STACK_SIZE, flags=0, args=None):
     flags = flags | SIGCHLD
 
-    stack = ctypes.c_char_p(" " * STACK_SIZE)
-    # stack = ctypes.c_char_p(" " * 8096)
+    stack = ctypes.c_char_p(" " * stack_size)
     stack = ctypes.cast(stack, ctypes.c_void_p)
 
     # Done to prevent Fatal Erorr: Inconsistent Stringed State.
     # No clue why it happens or how the following line prevents it.
-    stack = ctypes.c_void_p(stack.value + STACK_SIZE)
-    # stack = ctypes.c_void_p(stack.value + 8096)
+    stack = ctypes.c_void_p(stack.value + stack_size)
 
     if args:
         CFUNC = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_void_p)
