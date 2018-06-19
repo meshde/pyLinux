@@ -116,6 +116,21 @@ class LinuxTest(unittest.TestCase):
 
         return
 
+    def test_unshare_pid(self):
+        from pyLinux import linux
+        import os
+
+        linux.unshare(linux.CLONE_NEWPID)
+        pid = os.fork()
+
+        if pid == 0:
+            assert os.getpid() == 1
+            assert os.getppid() == 0
+        else:
+            print(pid)
+            _, status = os.waitpid(pid, 0)
+        return
+
 
 class CgroupsTest(unittest.TestCase):
     """ Tests for the cgroups module """
