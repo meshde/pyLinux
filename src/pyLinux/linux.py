@@ -69,7 +69,8 @@ libc = ctypes.CDLL('libc.so.6')
 def clone(callback, stack_size=STACK_SIZE, flags=0, args=None):
     flags = flags | SIGCHLD
 
-    stack = ctypes.c_char_p(" " * stack_size)
+    # stack = ctypes.c_char_p(" " * stack_size)
+    stack = ctypes.create_string_buffer(stack_size)
     stack = ctypes.cast(stack, ctypes.c_void_p)
 
     # Done to prevent Fatal Erorr: Inconsistent Stringed State.
