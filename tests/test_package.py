@@ -131,6 +131,46 @@ class LinuxTest(unittest.TestCase):
             _, status = os.waitpid(pid, 0)
         return
 
+    def test_unshare(self):
+        import os
+        from pyLinux import linux
+
+        def path_in_mounts(path):
+            with open('/proc/mounts', 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if path in line:
+                        return True
+            return False
+
+        path = os.path.join(self.tmpdir, 'meshde')
+        os.makedirs(path)
+
+        r, w = os.pipe()
+
+        pid = os.fork()
+
+        if pid == 0:
+            os.close(r)
+            w = os.fdopen(w, 'w')
+
+            linux.unshare(linux.CLONE_NEWNS)
+            linux.mount('tmpfs', path, 'tmpfs')
+            assert path_in_mounts(path)
+
+            w.write('I\'m done')
+            w.close()
+
+        else:
+            os.close(w)
+            r = os.fdopen(r)
+            msg = r.read()
+            print('Child sent:', msg)
+            assert not path_in_mounts(path)
+
+        return
+
+
 
 class CgroupsTest(unittest.TestCase):
     """ Tests for the cgroups module """
